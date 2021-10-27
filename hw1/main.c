@@ -79,7 +79,7 @@ int main(int argc, char const *argv[])
     cblas_daxpy(N, 1.0, b.data, 1, r.data, 1); // r <- b + r
     cblas_dcopy(N, r.data, 1, z.data, 1);      // z <- r
 
-    for (size_t i = 0; i < 20; i++)
+    for (size_t i = 0; i < 2 * N; i++)
     {
         // Az <- A*z
         cblas_dgemv(CblasRowMajor, CblasNoTrans,
