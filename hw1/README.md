@@ -8,4 +8,4 @@
 
 `icc -std=c11 -qmkl main.c -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -o main.exe`
 
-`cc -std=c11 -qmkl main.c -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -o main.exe && ./main.exe`
+`icc -std=c11 -qmkl main.c -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -o main.exe && ./main.exe`
