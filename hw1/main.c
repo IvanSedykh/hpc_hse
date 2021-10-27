@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <assert.h>
+#include <math.h>
 
 #include "mkl.h"
 
@@ -14,7 +15,7 @@ typedef struct Matrix
 void print_vector(const double *x, size_t N)
 {
     for (int i = 0; i < N; i++)
-        printf("%4.3f ", x[i]);
+        printf("%4.8f ", x[i]);
     printf("\n");
 }
 
@@ -34,8 +35,8 @@ void init_matrix(Matrix *A, int NROWS, int NCOLS)
 
 int main(int argc, char const *argv[])
 {
-    int N = 5;
-    double eps = 1e-6; // stopping criteria
+    int N = 10;
+    double eps = 1e-8; // stopping criteria
 
     Matrix A;
     init_matrix(&A, N, N);
@@ -58,16 +59,13 @@ int main(int argc, char const *argv[])
     // read input from file
     FILE *in_file = fopen("input.txt", "r");
     if (in_file == NULL)
-        printf("Bad file\n");
+        printf("Bad input file\n");
     for (size_t i = 0; i < N; i++)
         for (size_t j = 0; j < N; j++)
             fscanf(in_file, "%lf", &(A.data[i * A.cols + j]));
     for (size_t i = 0; i < N; i++)
         fscanf(in_file, "%lf", &(b.data[i]));
     fclose(in_file);
-
-    print_matrix(&A);
-    print_matrix(&b);
 
     // initialize
     double alpha = 0.0;
@@ -90,6 +88,13 @@ int main(int argc, char const *argv[])
         alpha = cblas_ddot(N, r.data, 1, r.data, 1) /
                 cblas_ddot(N, Az.data, 1, z.data, 1);
 
+        // if ||z|| < eps stop
+        if (fabs(cblas_dnrm2(N, z.data, 1)) < eps)
+        {
+            printf("Stopped after %d iterations\n", i);
+            break;
+        }
+
         cblas_daxpy(N, alpha, z.data, 1, x.data, 1); // x <- x + alpha*z
 
         r_prev_dot_r_prev = cblas_ddot(N, r.data, 1, r.data, 1); // r.r <- r.r
@@ -101,8 +106,21 @@ int main(int argc, char const *argv[])
         cblas_dscal(N, beta, z.data, 1); // z <- beta*z
         cblas_daxpy(N, 1.0, r.data, 1, z.data, 1);
 
+        printf("i=%d\n", i);
         print_matrix(&x);
     }
+
+    printf("result x:\n");
+    print_matrix(&x);
+
+    // write output to file
+    FILE *out_file = fopen("output.txt", "w");
+    if (out_file == NULL)
+        printf("Bad output file\n");
+    for (size_t i = 0; i < N; i++)
+        fprintf(out_file, "%.8f ", x.data[i]);
+    fprintf(out_file, "\n");
+    fclose(out_file);
 
     // deallocating memory
     free(A.data);
