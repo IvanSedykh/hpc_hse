@@ -1,0 +1,9 @@
+:: WARNING: setvars.sh has already been run. Skipping re-execution.
+   To force a re-execution of setvars.sh, use the '--force' option.
+   Using '--force' can result in excessive use of your environment variables.
+Using 8 threads
+Stopped after 2504 iterations
+Done in 1706.23046 milliseconds 
+diff norm= 1.2239990552694829e-07
+OK
+diff less than tol=1e-05
