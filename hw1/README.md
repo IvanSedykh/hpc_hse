@@ -1,5 +1,12 @@
 Данные генерируются ноутбуком.
 
+Компиляция:
+`module load INTEL/oneAPI_2021_u2_env`
+
+`icc -mkl main.c -o main.exe`
+
+
+
 Мейкфайл не работает.
 
 `bash`

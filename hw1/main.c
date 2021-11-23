@@ -79,6 +79,8 @@ int main(int argc, char const *argv[])
     cblas_daxpy(N, 1.0, b.data, 1, r.data, 1); // r <- b + r
     cblas_dcopy(N, r.data, 1, z.data, 1);      // z <- r
 
+    double start = dsecnd();
+
     for (size_t i = 0; i < 2 * N; i++)
     {
         // Az <- A*z
@@ -109,6 +111,9 @@ int main(int argc, char const *argv[])
         printf("i=%d\n", i);
         print_matrix(&x);
     }
+
+    double total_time = (dsecnd() - start) * 1000; // total time in ms
+    printf("Done in %.5f milliseconds \n", total_time);
 
     printf("result x:\n");
     print_matrix(&x);
