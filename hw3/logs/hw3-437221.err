@@ -1,0 +1,2 @@
+DeprecationWarning: 'source deactivate' is deprecated. Use 'conda deactivate'.
+OMP: Warning #234: OMP_NUM_THREADS: Invalid symbols found. Check the value "".

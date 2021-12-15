@@ -1,0 +1,62 @@
+:: WARNING: setvars.sh has already been run. Skipping re-execution.
+   To force a re-execution of setvars.sh, use the '--force' option.
+   Using '--force' can result in excessive use of your environment variables.
+Using 1 procs
+[0] Local_A shape= (1000, 1000)
+[0] Using 1 threads
+Iter:	0	Error:	0.000000
+Iter:	50	Error:	303427.784063
+Iter:	100	Error:	796.073548
+Iter:	150	Error:	479301.927363
+Iter:	200	Error:	559.023075
+Iter:	250	Error:	527.291692
+Iter:	300	Error:	439.814792
+Iter:	350	Error:	256.176208
+Iter:	400	Error:	436.077412
+Iter:	450	Error:	603.283489
+Iter:	500	Error:	786.011356
+Iter:	550	Error:	640.200482
+Iter:	600	Error:	504.284935
+Iter:	650	Error:	313382.045158
+Iter:	700	Error:	5334.630942
+Iter:	750	Error:	286.005689
+Iter:	800	Error:	8137.089317
+Iter:	850	Error:	1080.568042
+Iter:	900	Error:	437.949541
+Iter:	950	Error:	175915.228273
+Iter:	1000	Error:	202.544739
+Iter:	1050	Error:	268.873674
+Iter:	1100	Error:	246878.860873
+Iter:	1150	Error:	251.328687
+Iter:	1200	Error:	388.787701
+Iter:	1250	Error:	324.964425
+Iter:	1300	Error:	223.494694
+Iter:	1350	Error:	126.438000
+Iter:	1400	Error:	314.648658
+Iter:	1450	Error:	164.852713
+Iter:	1500	Error:	504.436675
+Iter:	1550	Error:	568.232880
+Iter:	1600	Error:	1055.651157
+Iter:	1650	Error:	2575623.995494
+Iter:	1700	Error:	3978.082911
+Iter:	1750	Error:	2811.085093
+Iter:	1800	Error:	1545.851144
+Iter:	1850	Error:	922.354301
+Iter:	1900	Error:	226.293217
+Iter:	1950	Error:	295.204977
+Iter:	2000	Error:	300.267145
+Iter:	2050	Error:	83.956927
+Iter:	2100	Error:	1503.110438
+Iter:	2150	Error:	253.557605
+Iter:	2200	Error:	33.186756
+Iter:	2250	Error:	76.779402
+Iter:	2300	Error:	122.556620
+Iter:	2350	Error:	21.818781
+Iter:	2400	Error:	0.006954
+Iter:	2450	Error:	0.000000
+Stopped after 2478 iterations
+Done in 1145.43819 milliseconds 
+diff norm= 1.0819528759788427e-07
+OK
+diff less than tol=1e-05
+cn-040
