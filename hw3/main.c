@@ -77,7 +77,7 @@ void my_cblas_dgemv(const CBLAS_LAYOUT Layout, const CBLAS_TRANSPOSE TransA,
     for (size_t i = 0; i < N; i++) {
         Y[i] *= beta;
         for (size_t j = 0; j < M; j++) {
-            Y[i] += alpha * A[N * i + j] * X[j];
+            Y[i] += alpha * A[M * i + j] * X[j];
         }
     }
 }
