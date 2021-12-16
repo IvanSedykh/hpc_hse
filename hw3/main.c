@@ -87,6 +87,7 @@ int main(int argc, char const *argv[]) {
     int N = 1000;
     double eps = 1e-8;  // stopping criteria
     double err = 0.0;
+    int stop_flag = 0;
 
     // __________MPI_______________
     MPI_Init(&argc, &argv);
@@ -198,6 +199,11 @@ int main(int argc, char const *argv[]) {
     for (size_t i = 0; i < 10 * N; i++) {
         if (rank == 0 && i % 50 == 0)
             printf("Iter:\t%d\tError:\t%f\n", i, err);
+
+        if (stop_flag) {
+            break;
+        }
+
         if (debug && rank == 0) {
             printf("root proc [%d] has z:\n", rank);
             print_matrix(&z);
@@ -251,6 +257,8 @@ int main(int argc, char const *argv[]) {
             // if (fabs(cblas_dnrm2(N, r.data, 1)) < eps)
             {
                 printf("Stopped after %d iterations\n", i);
+                stop_flag = 1;
+                MPI_Bcast(&stop_flag, 1, MPI_INT, 0, MPI_COMM_WORLD);
                 break;
             }
 
@@ -268,6 +276,7 @@ int main(int argc, char const *argv[]) {
             // printf("i=%d\n", i);
             // print_matrix(&x);
         }
+        MPI_Bcast(&stop_flag, 1, MPI_INT, 0, MPI_COMM_WORLD);
     }
 
     if (rank == 0) {
